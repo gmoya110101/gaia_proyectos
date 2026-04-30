@@ -64,6 +64,9 @@ def input_atleta():
     except ValueError:
         print("Error: Asegúrate de ingresar números en Edad, Calificación y Año.")
 
+def menu():
+    #TODO: Inserta el código del menú aquí
+    
 def main():
     input_atleta()
     print_result(atletas)
