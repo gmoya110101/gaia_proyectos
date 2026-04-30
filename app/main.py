@@ -1,25 +1,42 @@
 """Main module for the Gaia Proyectos application."""
+
 from datetime import datetime
 
-atletas=[]
-def atleta_hibrido(nombre:str, apellido:str, edad:int, ocupacion:str, ruta:str, calificacion:float, opinion:str ):
+atletas = []
+
+
+def atleta_hibrido(
+    nombre: str,
+    apellido: str,
+    edad: int,
+    ocupacion: str,
+    ruta: str,
+    calificacion: float,
+    opinion: str,
+):
     usuario = {
         "nombre": nombre,
         "apellido": apellido,
-        "edad": edad, 
+        "edad": edad,
         "ocupacion": ocupacion,
         "ruta": ruta,
         "calificacion": calificacion,
         "opinion": opinion,
-        "creacion": datetime.now().strftime("%Y-%m-%d %H:%M")
+        "creacion": datetime.now().strftime("%Y-%m-%d %H:%M"),
     }
     usuario["activo"] = True
     atletas.append(usuario)
     return usuario
-def print_result(data:dict):
-    for key, value in data.items():
-        print(f"el {key} es {value}.")
-def main():
+
+
+def print_result(data: list):
+
+    for atleta in data:
+        for key, value in atleta.items():
+            print(f"El {key} es {value}.")
+
+      
+def input_atleta():
     print("--- Registro de Atleta Híbrido ---")
 
     try:
@@ -31,18 +48,26 @@ def main():
         ruta_atleta = str(input("Por favor ingresa la ruta: "))
         calificacion_atleta = float(input("Por favor ingresa la calificacion: "))
         opinion_atleta = str(input("Por favor da tu opinion: "))
-        
-        resultado = atleta_hibrido(
-            nombre_atleta, apellido_atleta, edad_atleta, 
-            ocupacion_atleta, ruta_atleta, calificacion_atleta, 
-            opinion_atleta
+
+        atleta_hibrido(
+            nombre_atleta,
+            apellido_atleta,
+            edad_atleta,
+            ocupacion_atleta,
+            ruta_atleta,
+            calificacion_atleta,
+            opinion_atleta,
         )
 
         print("Registro exitoso:")
-        print_result(resultado)
 
     except ValueError:
         print("Error: Asegúrate de ingresar números en Edad, Calificación y Año.")
+
+def main():
+    input_atleta()
+    print_result(atletas)
+
 
 if __name__ == "__main__":
     main()
