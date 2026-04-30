@@ -1,5 +1,7 @@
 """Main module for the Gaia Proyectos application."""
 from datetime import datetime
+
+atletas=[]
 def atleta_hibrido(nombre:str, apellido:str, edad:int, ocupacion:str, ruta:str, calificacion:float, opinion:str ):
     usuario = {
         "nombre": nombre,
@@ -12,6 +14,7 @@ def atleta_hibrido(nombre:str, apellido:str, edad:int, ocupacion:str, ruta:str, 
         "creacion": datetime.now().strftime("%Y-%m-%d %H:%M")
     }
     usuario["activo"] = True
+    atletas.append(usuario)
     return usuario
 def print_result(data:dict):
     for key, value in data.items():
